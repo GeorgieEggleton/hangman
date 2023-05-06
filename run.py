@@ -1,6 +1,7 @@
 import random
 import os
 from graphics import welcome_graphic 
+from graphics import hangman
 guessed_letters = []
 word = ""
 
@@ -94,15 +95,16 @@ def check_against_word(word, guessed_letters):
 
 def lives_left(word, guessed_letters):
 
-    lives_left = 3
+    lives_left = 7
     for i in guessed_letters:
         if i not in word:
             lives_left -= 1
-
+   
     if lives_left <= 0:
         print("LOSER!!!!") 
+        print(hangman[7])
     else:
-        
+        print(hangman[7 - lives_left])
         print("\n")
         print(f"Lives Left = {lives_left}")
         print(f"Letters you've already tried = {guessed_letters}")
