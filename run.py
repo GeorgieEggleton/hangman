@@ -57,13 +57,23 @@ def letter_pick_and_validate():
 
     if current_letter.isalpha():
         print("checking against word")
-
+        check_letter(current_letter)
     else:
         print("not a letter")
         letter_pick_and_validate()
         
 
 
+def check_letter(current_letter, guessed_letters):
+    if current_letter in guessed_letters:
+        print("You already guessed that letter")
+        letter_pick_and_validate()
+       
+    else:
+        check_against_word() 
+        guessed_letters.append(current_letter)
+
+  
 
 opening_screen()
 letter_pick_and_validate()
