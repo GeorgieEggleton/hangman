@@ -44,26 +44,20 @@ def pickword():
 def play_game(word, guessed_letters):
 
     letter_pick_and_validate(word, guessed_letters)
-   
-"""
-    blank_word = "_ " *len(word)   
-    lives = 10
-    print(blank_word + "\n")
-    print(lives)
-"""
+
 
 
 
 def letter_pick_and_validate(word, guessed_letters):
-    print("pick a letter" + word)
+    
     current_letter = input("Pick a letter \n")   
     
     if current_letter.isalpha():
         print("checking against word")
-        check_letter(word, guessed_letters, current_letter)
+        check_letter(word, guessed_letters, current_letter.upper())
     else:
         print("not a letter")
-        letter_pick_and_validate()
+        letter_pick_and_validate(word, guessed_letters)
         
 
 
@@ -71,7 +65,7 @@ def check_letter(word, guessed_letters, current_letter):
     print(word)
     if current_letter in guessed_letters:
         print("You already guessed that letter")
-        letter_pick_and_validate()
+        letter_pick_and_validate(word, guessed_letters)
        
     else:
         guessed_letters.append(current_letter)
@@ -90,42 +84,22 @@ def check_against_word(word, guessed_letters):
         else:
             display_word += "_ "
     print(display_word)
+    
+    if "_" in display_word:
+        letter_pick_and_validate(word, guessed_letters)
+    else:    
+        print("YOU WIN!!!")
 
 
 
 
 
-"""
-    if "_ " not in word:
-        print("you win :-)")
-    else:
-       letter_pick_and_validate() 
-"""
 #def lives_left():
 
 
 
 
 opening_screen(word, guessed_letters)    
-letter_pick_and_validate(word, guessed_letters)
 
 
 
-
-
-
-#check_against_word(["y","a", "c", "h", "t"], "yacht")
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
