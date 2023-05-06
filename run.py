@@ -13,7 +13,7 @@ def opening_screen(word, guessed_letters):
     print("welcome to sailing hangman \n")
     print("Guess the sailing word before the man is hung! \n")
 
-    game_start = input("Press 1 & enter to start \n")
+    game_start = input("Press 1 & enter to start or 2 & enter to read the rules \n")
     if game_start == "1":
         word = pickword()
         check_against_word(word, [])
@@ -32,7 +32,13 @@ def display_rules():
     print("Try to guess the nautical word before the hangman is complete \n")
     print("Type a letter and press Enter \n")
     print("If the letter is in the word it will show \n")
-    print("If the letter is not in the word you loose a live and  \n")
+    print("If the letter is not in the word you loose a live and get closer to hanging the man\n")
+    print("GOOD LUCK!!\n")
+    game_start = input("Press 1 & enter to start or 2 & enter to read the rules \n")
+    if game_start == "1":
+        word = pickword()
+        check_against_word(word, [])
+
 
 
 def pickword():
