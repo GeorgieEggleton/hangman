@@ -1,6 +1,6 @@
 import random
 import os
-
+from graphics import welcome_graphic 
 guessed_letters = []
 word = ""
 
@@ -8,6 +8,7 @@ def opening_screen(word, guessed_letters):
     """
     Welcome text, Expains rules, waits for player to press start
     """
+    print(welcome_graphic[0])
     print("welcome to sailing hangman \n")
     print("Guess the sailing word before the man is hung! \n")
 
