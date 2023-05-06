@@ -1,6 +1,6 @@
 import random
 
-
+guessed_letters = []
 
 def opening_screen():
     """
@@ -32,35 +32,29 @@ def display_rules():
 
 def pickword():
     wordlist = ["yacht", "boat", "mast"]
-
     word = random.choice(wordlist)
-    
     return word.upper()
    
-
-
 
 def play_game(word):
     
     blank_word = "_ " *len(word)   
     lives = 10
-    guessed_letters = []
     print(blank_word + "\n")
-    
     print(lives)
 
 
 
 
-def letter_pick_and_validate():
+def letter_pick_and_validate(guessed_letters):
     current_letter = input("Pick a letter \n")   
-
+    
     if current_letter.isalpha():
         print("checking against word")
-        check_letter(current_letter)
+        check_letter(current_letter, guessed_letters)
     else:
         print("not a letter")
-        letter_pick_and_validate()
+        letter_pick_and_validate(guessed_letters)
         
 
 
@@ -70,13 +64,37 @@ def check_letter(current_letter, guessed_letters):
         letter_pick_and_validate()
        
     else:
-        check_against_word() 
+        #check_against_word() 
         guessed_letters.append(current_letter)
 
-  
 
-opening_screen()
-letter_pick_and_validate()
+
+def check_against_word(guessed_letters, word):
+    display_word = ""
+    for i in word:
+        if i in guessed_letters:
+            display_word += i +" "
+ 
+        else:
+            display_word += "_ "
+    print(display_word)
+
+"""
+opening_screen()    
+letter_pick_and_validate(guessed_letters)
+"""
+
+
+
+
+
+check_against_word(["a", "c"], "yacht")
+    
+
+
+
+
+
 
 
 
