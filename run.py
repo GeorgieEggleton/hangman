@@ -1,3 +1,5 @@
+import random
+
 def opening_screen():
     """
     Welcome text, Expains rules, waits for player to press start
@@ -24,3 +26,10 @@ def display_rules():
     print("Type a letter and press Enter \n")
     print("If the letter is in the word it will show \n")
     print("If the letter is not in the word you loose a live and  \n")
+
+
+def pickword():
+    wordlist = ["yacht", "boat", "mast"]
+    word = random.choice(wordlist)
+    return word.upper()
+   
