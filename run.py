@@ -1,4 +1,5 @@
 import random
+import os
 
 guessed_letters = []
 word = ""
@@ -13,7 +14,8 @@ def opening_screen(word, guessed_letters):
     game_start = input("Press 1 & enter to start \n")
     if game_start == "1":
         word = pickword()
-        play_game(word, guessed_letters)
+        check_against_word(word, [])
+      
 
     if game_start == "2": 
         display_rules()   
@@ -41,10 +43,6 @@ def pickword():
 
 
 
-def play_game(word, guessed_letters):
-
-    letter_pick_and_validate(word, guessed_letters)
-
 
 
 
@@ -53,7 +51,7 @@ def letter_pick_and_validate(word, guessed_letters):
     current_letter = input("Pick a letter \n")   
     
     if current_letter.isalpha():
-        print("checking against word")
+        
         check_letter(word, guessed_letters, current_letter.upper())
     else:
         print("not a letter")
@@ -62,7 +60,7 @@ def letter_pick_and_validate(word, guessed_letters):
 
 
 def check_letter(word, guessed_letters, current_letter):
-    print(word)
+    print("User hint" + word)
     if current_letter in guessed_letters:
         print("You already guessed that letter")
         letter_pick_and_validate(word, guessed_letters)
@@ -74,8 +72,7 @@ def check_letter(word, guessed_letters, current_letter):
 
 
 def check_against_word(word, guessed_letters):
-    print("im in function check_against_word")
-    print(word)
+    os.system("clear")
     display_word = ""
     for i in word:
         if i in guessed_letters:
@@ -96,7 +93,7 @@ def check_against_word(word, guessed_letters):
 
 def lives_left(word, guessed_letters):
 
-    lives_left = 10
+    lives_left = 3
     for i in guessed_letters:
         if i not in word:
             lives_left -= 1
@@ -104,6 +101,10 @@ def lives_left(word, guessed_letters):
     if lives_left <= 0:
         print("LOSER!!!!") 
     else:
+        
+        print("\n")
+        print(f"Lives Left = {lives_left}")
+        print(f"Letters you've already tried = {guessed_letters}")
         letter_pick_and_validate(word, guessed_letters)     
 
 opening_screen(word, guessed_letters)    
