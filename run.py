@@ -83,10 +83,10 @@ def check_against_word(word, guessed_letters):
  
         else:
             display_word += "_ "
+            
     print(display_word)
-    
     if "_" in display_word:
-        letter_pick_and_validate(word, guessed_letters)
+        lives_left(word, guessed_letters)
     else:    
         print("YOU WIN!!!")
 
@@ -94,10 +94,17 @@ def check_against_word(word, guessed_letters):
 
 
 
-#def lives_left():
+def lives_left(word, guessed_letters):
 
+    lives_left = 10
+    for i in guessed_letters:
+        if i not in word:
+            lives_left -= 1
 
-
+    if lives_left <= 0:
+        print("LOSER!!!!") 
+    else:
+        letter_pick_and_validate(word, guessed_letters)     
 
 opening_screen(word, guessed_letters)    
 
