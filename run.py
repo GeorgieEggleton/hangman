@@ -3,17 +3,14 @@ import os
 from graphics import welcome_graphic
 from graphics import hangman
 import time
+from words import words
+from words import definition
 
 guessed_letters = []
 word = ""
-wordlist = ["YACHT", "PORT", "BOAT", "MAST", "BAGGYWRINKLE"]
-definition = [
-    "a floating thing",
-    "the left",
-    "A small flaoting thing",
-    "The stick",
-    "something Owain doesn't know"
-    ]
+wordlist = words
+for i in range(len(wordlist)):
+    wordlist[i] = wordlist[i].upper()
 
 
 def opening_screen(word, guessed_letters):
@@ -104,10 +101,10 @@ def check_letter(word, guessed_letters, current_letter):
 
 
 def check_against_word(word, guessed_letters):
-    
     """
     Clears the terminal to keep game space clear and readable
-    Checks each letter of the word in turn to see if the guessed letter is there
+    Checks each letter of the word in turn to see
+    if the guessed letter is there
     Displays the letter in the correct place
     If the word is complete displays winning message, word and definition
     """
@@ -117,7 +114,7 @@ def check_against_word(word, guessed_letters):
         if i in guessed_letters:
             display_word += i + " "
         else:
-            display_word += "_ "  
+            display_word += "_ "
     print(display_word)
     if "_" in display_word:
         lives_left(word, guessed_letters)
@@ -125,7 +122,7 @@ def check_against_word(word, guessed_letters):
         print("YOU WIN!!!")
         wordnum = wordlist.index(word)
         worddef = definition[wordnum]
-        print(f"{word} - {worddef}")
+        print(f"{word} - {worddef}\n")
         time.sleep(1)
         play_again_option(word, guessed_letters)
 
@@ -145,7 +142,7 @@ def lives_left(word, guessed_letters):
         print("Oh no! You Lose!\n")
         wordnum = wordlist.index(word)
         worddef = definition[wordnum]
-        print(f"{word} - {worddef}")
+        print(f"{word} - {worddef}\n")
         time.sleep(1)
         play_again_option(word, guessed_letters)
     else:
@@ -153,25 +150,26 @@ def lives_left(word, guessed_letters):
         print("\n")
         print(f"Lives Left = {lives_left}")
         print(f"Letters you've already tried = {guessed_letters}")
-        letter_pick_and_validate(word, guessed_letters)     
+        letter_pick_and_validate(word, guessed_letters)
 
-def play_again_option(word, guessed_letters):       
+
+def play_again_option(word, guessed_letters):
+    """
+    Add option to play again after winning or losing.
+    """
     play_again = input("Would you like to play again? Y/N \n")
     play_again = play_again.strip(" ")
     play_again = play_again.capitalize()
     if play_again == "Y":
         opening_screen(word, guessed_letters)
-                
+
     elif play_again == "N":
         print("Thanks for playing, come back soon!")
         exit()
-        
+
     else:
         print("Not an Option Pick Y or N")
-        play_again_option(word, guessed_letters)    
-        
-    
-    
-           
+        play_again_option(word, guessed_letters)
+
 
 opening_screen(word, guessed_letters)
