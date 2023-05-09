@@ -4,6 +4,7 @@ import random
 import os
 from graphics import welcome_graphic 
 from graphics import hangman
+import time
 
 """
 SCOPE = [
@@ -28,6 +29,9 @@ def opening_screen(word, guessed_letters):
     Welcome text, Expains rules, waits for player to press start
     """
     print(welcome_graphic[0])
+    time.sleep(2)
+    print(welcome_graphic[1])
+
     print("welcome to sailing hangman \n")
     print("Guess the sailing word before the man is hung! \n")
     game_start(word, guessed_letters)
