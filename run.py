@@ -1,6 +1,6 @@
 import random
-import gspread
-from google.oauth2.service_account import Credentials
+#import gspread
+#from google.oauth2.service_account import Credentials
 import os
 from graphics import welcome_graphic 
 from graphics import hangman
@@ -89,7 +89,7 @@ def letter_pick_and_validate(word, guessed_letters):
 
 
 def check_letter(word, guessed_letters, current_letter):
-    print("User hint" + word)
+    
     if current_letter in guessed_letters:
         print("You already guessed that letter")
         letter_pick_and_validate(word, guessed_letters)
@@ -132,7 +132,7 @@ def lives_left(word, guessed_letters):
             lives_left -= 1
    
     if lives_left <= 0:
-        print("LOSER!!!!") 
+        print("You Lose!") 
         print(hangman[7])
         wordnum = wordlist.index(word)
         worddef = definition[wordnum]
