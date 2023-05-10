@@ -78,9 +78,13 @@ def letter_pick_and_validate(word, guessed_letters):
     If not a letter returns Error message and asks them to try again
     """
     current_letter = input("Pick a letter \n")
+    
+    if len(current_letter) > 1:
+        print("Too many letters, pick only one")
+        letter_pick_and_validate(word, guessed_letters)
 
     if current_letter.isalpha():
-        check_letter(word, guessed_letters, current_letter.upper())
+        check_letter(word, guessed_letters, current_letter.upper()) 
     else:
         print("not a letter")
         letter_pick_and_validate(word, guessed_letters)

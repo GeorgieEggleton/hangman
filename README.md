@@ -18,6 +18,7 @@ View the live site here - https://nautical-hangman.herokuapp.com/
 ### Design flowchart
 In order to check my logic for the flow of the game I created the following flow chart. 
 
+![Flowchart](/readme-images/flowchart.png)
 
 ### Features
 
@@ -49,11 +50,14 @@ After the end of each round the game will ask the player if they would like to p
 ## Future Features
 - In future additions I would like to a google sheet API to save the users scores so they can return and try to beat their last score
 - I would like to add the option for the user to pick a difficulty level (based on the number of letters in the word), this means the game could be targetted at mulitiple different age groups easier. 
+- Allow the user to guess the whole word at once if they think they know the answer. 
 
 ## Testing
-I ran the code through the Code Insitute python validator. A number of errors were picked up, mostly mnor issues such as trailing white space, lines too long, or too many line breaks. I have corrected all of these and the code now passes the validator with no errors found. 
+I ran the run.py file through the Code Insitute python validator. A number of errors were picked up, mostly mnor issues such as trailing white space, lines too long, or too many line breaks. I have corrected all of these and the code now passes the validator with no errors found. 
 
 ![Validator](/readme-images/validator_screenshot_2.png)
+
+The words.py and graphics.py did have a number of errors in relation to lines being too long, trailing white spaces and unxpected characters. However, I belivie a lot of this is because I am using Ascii Art for the hangman and all seems to display correctly in the mock terminal so I have left these alone. 
 
 As this is an interactive game there are several points throught the game that require user input. I have tired to test these as much as possible and pre-empt common errors such as a space being added before or after the option and add some defensive codings such as .strip() to ensure this is not a problem 
 
@@ -66,6 +70,8 @@ I also needed to move the Graphics "Nautical" and "Hangman" on to two seperate l
 On delpoyment I found that if the image and words loaded at the same time the image was pushed up in the terminal out of view unless the user scrolled up. I therefore decided to load the boat graphic first, give a 2 second delay, then load the writting to give a better aesthetic.  
 
 The last image of the hangman looks slightly odd. This is still to be fixed. 
+
+If the user entered two letters at once before pressing enter it accepted this as a sting, but was only checking for one letter. I have added another if statement to check only one letter at a time is added and re-promt the user to add just one letter at a time. 
 
 
 ### Technologies
@@ -97,13 +103,3 @@ I used W3 Schools extensivly to check syntax as devloping.
 
 
 
-
-
-
-
-Made game text sit along side hangman graphic
-
-
-
-Bugs- 
-Input needs to be uppercase
